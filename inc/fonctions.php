@@ -1,0 +1,10 @@
+<?php
+
+//Suppression des accents 
+function supprimeAccents($chaine)
+	{
+		$tofind = "ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÑñÿ";
+		$replac = "AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuNny";
+		return(strtr($chaine,$tofind,$replac));
+	}
+?>

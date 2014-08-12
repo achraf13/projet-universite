@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 
 //  hostname de la base de données, par defaut localhsot
 $mysql_hostname = "localhost"; 
@@ -6,17 +6,17 @@ $mysql_hostname = "localhost";
 
 
 //  utilisateur de la base de données
-$mysql_utilisateur = "Vbeta1";
+$mysql_utilisateur = "root";
 
 
 
 //  mot de passe d'utilisateur de la abase de donnée
-$mysql_pass = "hhhhh";  
+$mysql_pass = "";  
 
 
 
 // nom de la base de données
-$mysql_database = "uabt";  
+$mysql_database = "uabtfinale";  
 
 
 

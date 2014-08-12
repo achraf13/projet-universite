@@ -54,10 +54,7 @@ font-size: 96px;
 				</div>
 		<input class="form-control" type="text" name="recherche" <?php if(isset($_POST["recherche"])){ ?> value="<?php echo $_POST["recherche"];?> "<?php } ?> placeholder="Recherche ....">
 			</div><br>
-			<select class="form-control">
-				<option>1</option>
-			    
-			</select>
+			
 		</div>
 		<center>
 			<button type="submit" name="submit" class="btn btn-primary " style="width:500px;"><b>Rechercher</b></button>
@@ -77,9 +74,16 @@ font-size: 96px;
 					</center>
 					
 					<?php
-						
-							$motRecherche=mysql_real_escape_string($_POST["recherche"]);
-							$requetepage=mysql_query("SELECT * FROM page WHERE status_page = '1' and (titre_page like '%$motRecherche%' or contenu_page like '%$motRecherche%' )");
+							function supprimeAccents($chaine)
+								{
+									$tofind = "ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ";
+									$replac = "AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNn";
+									return(strtr($chaine,$tofind,$replac));
+								}
+							$motRecherch=mysql_real_escape_string($_POST["recherche"]);
+							$motRecherche=supprimeAccents($motRecherch);
+							
+							$requetepage=mysql_query("SELECT * FROM page WHERE status_page = '1' and (titre_page_formate like '%$motRecherche%' or contenu_page_formate like '%$motRecherche%' )");
 							$motExistpage= mysql_num_rows($requetepage);
 					?>
 							<h3><center><b>Le nombre des resultats obtenus est:</b></center></h3>
@@ -97,8 +101,9 @@ font-size: 96px;
 					
 					<?php
 						
-							$motRecherche=mysql_real_escape_string($_POST["recherche"]);
-							$requeteactualite=mysql_query("SELECT * FROM actualite WHERE status_actualite = '1' and (titre_actualite like '%$motRecherche%' or contenu_actualite like '%$motRecherche%' )");
+							$motRecherch=mysql_real_escape_string($_POST["recherche"]);
+							$motRecherche=supprimeAccents($motRecherch);
+							$requeteactualite=mysql_query("SELECT * FROM actualite WHERE status_actualite = '1' and (titre_actualite_formate like '%$motRecherche%' or contenu_actualite_formate like '%$motRecherche%' )");
 							$motExistactualite= mysql_num_rows($requeteactualite);
 					?>
 							<h3><center><b>Le nombre des resultats obtenus est:</b></center></h3>
