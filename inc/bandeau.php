@@ -9,7 +9,7 @@ $objectErreur = new myClassErreur();
 $titreBandeau = mysql_real_escape_string ($titreBandeau);
 $descriptionBandeau = mysql_real_escape_string ($descriptionBandeau);
 $imageBandeau = mysql_real_escape_string ($imageBandeau);
-$idAuteur = $_SESSION["ID_USER"];
+$idAuteur = $_SESSION["ID_ADMIN_ACC_VAL"];
 
 
 
@@ -20,16 +20,9 @@ else $objectErreur->initialiserErreur("Erreur d'enregistrement a la base de donn
 
 
 function supprimerBandeau( $idBandeau ) 
-{	
-	
+{
 	$objectErreur = new myClassErreur();
-	$requteImage=  mysql_query("SELECT * FROM bandeau WHERE id_bandeau='$idBandeau'") or die(mysql_error());
-	$getImage=mysql_fetch_assoc($requteImage);
-	$image=$getImage['image_bandeau'];
 	$requeteBandeau = mysql_query("DELETE FROM bandeau WHERE id_bandeau='$idBandeau'") or die(mysql_error());
-	$lienImage = "../uploadBandeau/".$image; //nom de ton fichier ici.
-    unlink($lienImage);
-	
 	
 				if ($requeteBandeau )
 				{

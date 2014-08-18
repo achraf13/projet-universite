@@ -108,7 +108,7 @@ if (isset($_POST['submitGestion']))
 		</div>
 		
 		<!--     selectionner toute les actions avc javascript ;)     -->
-		 
+		
 
 		<div class="checkbox">
 			<label>
@@ -123,7 +123,7 @@ if (isset($_POST['submitGestion']))
 		
 		<hr>
 <?php 
-        $requeteAction=Mysql_query("SELECT * FROM Les_actions ORDER BY groupe_action ASC")or die(mysql_error());
+        $requeteAction=Mysql_query("SELECT * FROM Les_actions")or die(mysql_error());
 		$javaCode="";
 		while( $getAction=Mysql_fetch_array($requeteAction))
 		{
@@ -132,7 +132,6 @@ if (isset($_POST['submitGestion']))
 			   $nomAction=$getAction['nom_action'];
 			   $afficherAction=$getAction['afficher_action'];
 			   $groupeAction=$getAction['groupe_action'];
-			  
 			   
 			   $javaCode = $javaCode.' var '.$nomAction.' = $("#checkboxlive'.$idAction.'").is(":checked"); 
 						if ('.$nomAction.' == false) $("input[name=ALL]").attr("checked", false);';
