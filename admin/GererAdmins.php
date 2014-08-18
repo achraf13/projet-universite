@@ -132,6 +132,7 @@ if (isset($_POST['submitGestion']))
 			   $nomAction=$getAction['nom_action'];
 			   $afficherAction=$getAction['afficher_action'];
 			   $groupeAction=$getAction['groupe_action'];
+			  
 			   
 			   $javaCode = $javaCode.' var '.$nomAction.' = $("#checkboxlive'.$idAction.'").is(":checked"); 
 						if ('.$nomAction.' == false) $("input[name=ALL]").attr("checked", false);';

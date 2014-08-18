@@ -1,27 +1,22 @@
-﻿<?php 
+<?php 
 
 //   vous trouvez ici toute les fonctions utilisées par les actualtés
 
-	require_once('fonctions.php');
 
 //-----------------------------------------------------
 //-----------------------------------------------------
 //   Partie administration 
 //-----------------------------------------------------
 //-----------------------------------------------------
+
 class myClassActualite {
-	
 // creation d'une actualite dans la base des données
-function ajouterActualite ( $titreActualite, $contenuActualite,$langueActualite, $categorieActualite, $statusActualite ) 
+function ajouterActualite ( $titreActualite, $contenuActualite, $langueActualite, $categorieActualite, $statusActualite ) 
 {
 	$objectErreur = new myClassErreur();
-	//$titreActualite = mysql_real_escape_string ($titreActualite);
-//die(var_dump($titreActualite)."====");
-	$titreActualiteFormatee= supprimeAccents($titreActualite);
-die(var_dump($titreActualiteFormatee));
-	$contenuActualiteFormatee= supprimeAccents($contenuActualite);
+	
+	$titreActualite = mysql_real_escape_string ($titreActualite);
 	$contenuActualite = mysql_real_escape_string ($contenuActualite);
-	//$contenuActualiteFormate = mysql_real_escape_string ($contenuActualiteFormate);
 	$langueActualite = mysql_real_escape_string ($langueActualite);
 	$categorieActualite = mysql_real_escape_string ($categorieActualite);
 	$statusActualite = mysql_real_escape_string ($statusActualite);
@@ -33,6 +28,7 @@ if (empty($titreActualite) or empty($contenuActualite) or ($langueActualite == "
 $objectErreur->initialiserErreur("Il faut remplir tout les champs." , 0);
 }
 
+	
 else 
 		{
 		
@@ -43,7 +39,7 @@ else
 			if($statusActualite == "2") $validation=1;
 			else $validation=0;
 			
-			$requete = mysql_query("INSERT INTO actualite (titre_actualite,titre_actualite_formate, auteur_id_actualite, contenu_actualite,contenu_actualite_formate, langue_actualite, categorie_actualite, status_actualite,validation) VALUES ('$titreActualite','$titreActualiteFormatee', '$idAuteur', '$contenuActualite','$contenuActualiteFormatee', '$langueActualite', '$categorieActualite', '$statusActualite','$validation')") or die(mysql_error());
+			$requete = mysql_query("INSERT INTO actualite (titre_actualite, auteur_id_actualite, contenu_actualite, langue_actualite, categorie_actualite, status_actualite,validation) VALUES ('$titreActualite', '$idAuteur', '$contenuActualite', '$langueActualite', '$categorieActualite', '$statusActualite','$validation')") or die(mysql_error());
 			$id_page=mysql_insert_id();
 			if ($requete)
 			{

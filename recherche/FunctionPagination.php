@@ -69,7 +69,7 @@ function pagination ($page,$motReche,$nbreResultats,$numPage)
 								echo $substr."....";  
 							 
 							 ?>
-								<a href="afficherActualite.php?id=<?php echo $idd; ?>"> <button type="button" class="btn btn-primary">Voir plus</button></a>  <hr>
+								<a href="../afficherActualiteRecherche.php?id=<?php echo $idd; ?>"> <button type="button" class="btn btn-primary">Voir plus</button></a>  <hr>
 							 <?php
 							} 
 								$supp=mysql_query("DELETE FROM affichage_pagination");

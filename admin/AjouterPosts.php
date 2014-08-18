@@ -1,24 +1,16 @@
-﻿<?php 
+<?php 
 
 include('load.php');
 
 include('../inc/actualites.php');
 include('../inc/categories.php');
 
-if (isset($_POST["titreActualite"])) $titreActualite = isset($_POST["titreActualite"]);
-	else die("le titre est necessaire");
 
 if (isset($_POST["titreActualite"]) or isset($_POST["contenuActualite"])  or isset($_POST["langueActualite"]) or isset($_POST["categorieActualite"])) 
-	{
-		//$contenuActualiteFormate =strtr( utf8_decode($_POST["contenuActualite"]),'ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ','aaaaaaaaaaaaooooooooooooeeeeeeeecciiiiiiiiuuuuuuuuynn');
-		//$titreActualiteFormate =strtr(utf8_decode($_POST["titreActualite"]),'ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ','aaaaaaaaaaaaooooooooooooeeeeeeeecciiiiiiiiuuuuuuuuynn');
-	
-		
-		$objectActualite = new myClassActualite();
-		$objectActualite->ajouterActualite ($titreActualite,$_POST["contenuActualite"],$_POST["langueActualite"],$_POST["categorieActualite"],$_POST["statusActualite"]);
-	}
-	
-	
+{
+	$objectActualite = new myClassActualite();
+	$objectActualite->ajouterActualite ($_POST["titreActualite"],$_POST["contenuActualite"],$_POST["langueActualite"],$_POST["categorieActualite"],$_POST["statusActualite"]);
+}
 $objectErreur = new myClassErreur();
 $objectErreur->afficherErreurs();
 
