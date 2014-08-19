@@ -7,8 +7,8 @@ class myClassRemplacer
 	//$code = mysql_real_escape_string($code);
 	//$lienPage = mysql_real_escape_string($lienPage);
 
-	//$page = file_get_contents($lienPage);
-	$newpage = str_replace( $motRemplacer, $code, $lienPage);
+	$page = file_get_contents($lienPage);
+	$newpage = str_replace( $motRemplacer, $code, $page);
 	echo $newpage ;
 	//echo $code;
 	}
